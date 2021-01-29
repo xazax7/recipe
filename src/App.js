@@ -12,6 +12,7 @@ function App() {
 
         {/* Find the 'slug' of the blog post that we will declare in our sanity studio, which will then be the link/url*/}
         <Route component={OnePost} path="/:slug" />
+
       </div>
     </BrowserRouter>
   );
