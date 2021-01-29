@@ -12,10 +12,18 @@ function urlFor(source) {
     return builder.image(source);
 }
 
+// Youtube ID Finder
+function youtubeParser(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match && match[7].length == 11) ? match[7] : false;
+}
+
 export default function OnePost() {
     // set state
     const [postData, setPostData] = useState(null);
     const { slug } = useParams();
+
 
     // use useeffect to grab data from our sanity client
     useEffect(() => {
@@ -33,7 +41,8 @@ export default function OnePost() {
                 },
                 body,
                 "name": author->name,
-                "authorImage":author->image
+                "authorImage":author->image,
+                youtube
             }`,
             // indicate we are looking at a slug
             { slug }
@@ -41,6 +50,8 @@ export default function OnePost() {
             .then((data) => setPostData(data[0]))
             .catch(console.error)
     }, [slug]);
+
+
 
     if (!postData) return <div>Loading...</div>;
 
@@ -60,7 +71,11 @@ export default function OnePost() {
 
             <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" />
             <div>
-                {/* Gets all text in the body and display it. */}
+
+                {/* Youtube video */}
+                {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+
+                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                 <BlockContent
                     blocks={postData.body}
                     projectId={sanityClient.clientConfig.projectId}
