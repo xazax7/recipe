@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().min(5).max(25).warning('Missing Title.').error('Missing Field: Title')
     },
     {
       name: 'slug',
@@ -16,6 +17,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: Rule => Rule.required().warning('Missing slug. (Press Generate)').error('Missing Field: Slug')
     },
     {
       name: 'author',
@@ -30,6 +32,15 @@ export default {
       options: {
         hotspot: true,
       },
+      validation: Rule => Rule.custom(name => {
+        // if (name) {
+        //   return true // Allow undefined values
+        // }
+        if (name) {
+          return true
+        }
+        return name ? true : 'Missing image upload for Main Image'
+      })
     },
     {
       name: 'categories',

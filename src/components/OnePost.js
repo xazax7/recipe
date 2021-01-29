@@ -68,8 +68,9 @@ export default function OnePost() {
                 </div>
             </div>
             {/* Header title/author stops */}
-
-            <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" />
+            {postData.mainImage &&
+                <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" />
+            }
             <div>
 
                 {/* Youtube video */}
