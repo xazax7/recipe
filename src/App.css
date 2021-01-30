@@ -32,7 +32,15 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  background: black;
+  min-height: 5rem;
+  width: 100vw;
+  color: white;
 }

@@ -1,4 +1,6 @@
-import './App.css';
+// NOt needed
+// import './App.css';
+import './css/main.css'
 import { BrowserRouter, Route } from "react-router-dom"
 import AllPosts from "./components/AllPosts.js"
 import OnePost from "./components/OnePost.js"
