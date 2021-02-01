@@ -1,22 +1,47 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Kristi&family=Roboto+Slab:wght@300&family=Open+Sans:wght@300&display=swap");
 .header {
-  background: black;
-  min-height: 15rem;
+  min-height: 10rem;
   width: 100%;
-  color: white;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
 }
 
-.header-title-text {
+.header-title {
   font-size: 3rem;
+  font-family: 'Kristi', cursive;
+  border-bottom: 1px solid black;
+  line-height: 0.7;
+  width: 80%;
+  max-width: 1336px;
+  text-align: center;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.loading-text {
+  font-size: 2rem;
+  text-align: center;
+  margin: 4rem 0;
+  animation: fadeIn 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .nav-list {
@@ -37,29 +62,125 @@
 }
 
 .post-list {
+  width: 80%;
   max-width: 1336px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
   margin: 0 auto;
-  text-align: center;
 }
 
-.post-small {
-  height: 30rem;
-  display: inline-block;
-  min-width: 10rem;
-  width: 23rem;
-  margin: 0 2rem 10rem;
-}
-
-.post-small-img {
-  height: 100%;
+.post-list h1 {
+  display: block;
   width: 100%;
 }
 
+.post-small-container {
+  flex: 0 1 33%;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.3s;
+}
+
+.post-small-container:hover {
+  opacity: 0.9;
+}
+
+.post-small {
+  height: 37rem;
+  width: 100%;
+  display: block;
+}
+
+.post-small-img {
+  width: 100%;
+  height: 90%;
+  display: block;
+}
+
+.post-small img {
+  object-fit: cover;
+  background-position: center;
+}
+
 .post-small-details {
-  min-height: 10rem;
+  min-height: 10%;
+  display: block;
+  padding: 0.6rem 1rem;
+  border: 1px solid #c8c8c8;
 }
 
 .post-small-title {
   font-size: 1.4rem;
   text-align: left;
+}
+
+.post-small-description {
+  font-family: 'Open Sans', sans-serif;
+  color: #464646;
+}
+
+h1,
+h2 {
+  font-family: 'Roboto Slab', serif;
+}
+
+.recipe-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.recipe-page-title {
+  font-size: 4rem;
+}
+
+.recipe-page blockquote {
+  background: #f0f0f0;
+  padding: 0.5rem 2rem;
+  font-size: 1.3rem;
+}
+
+.ingredients-list {
+  padding: 1rem 3rem;
+  border: 1px solid #464646;
+}
+
+.ingredients-list-header {
+  font-size: 2rem;
+}
+
+.ingredients-list p:before {
+  content: "•";
+  margin: 1rem;
+}
+
+.recipe-page-details {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.recipe-page-details .recipe-page-img {
+  flex: 0 1 75%;
+}
+
+.recipe-page-details .recipe-page-details__text {
+  flex: 0 1 20%;
+  border: 1px solid #c7c7c7;
+  padding: 1rem;
+}
+
+.recipe-page-details .recipe-page-details__text span {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
 }

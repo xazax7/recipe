@@ -1,15 +1,22 @@
+// @import url('https://fonts.googleapis.com/css2?family=Domine&family=Kristi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kristi&family=Roboto+Slab:wght@300&family=Open+Sans:wght@300&display=swap');
+
 .header {
-    background: black;
-    min-height: 15rem;
+    min-height: 10rem;
     width: 100%;
-    color: white;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
 
-    &-title-text {
+    &-title {
         font-size: 3rem;
+        font-family: 'Kristi', cursive;
+        border-bottom: 1px solid black;
+        line-height: 0.7;
+        width: 80%;
+        max-width: 1336px;
+        text-align: center;
     }
 }
 
@@ -18,6 +25,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+// Text that shows up before article does
+.loading-text {
+    font-size: 2rem;
+    text-align: center;
+    margin: 4rem 0;
+    animation: fadeIn 1s linear infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .nav {
@@ -41,30 +71,173 @@
 }
 
 .post-list {
+    h1 {
+        display: block;
+        width: 100%;
+    }
+
+    width: 80%;
     max-width: 1336px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
     margin: 0 auto;
-    text-align: center;
 }
 
-.post-small {
-    height: 30rem;
-    display: inline-block;
-    min-width: 10rem;
-    width: 23rem;
-    margin: 0 2rem 10rem;
+.post-small-container {
 
-    &-img {
-        height: 100%;
-        width: 100%;
+    flex: 0 1 33%;
+    padding: 1rem;
+    margin: 0 0 1rem;
+
+
+    text-decoration: none;
+    color: black;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.9;
 
     }
 
+}
+
+
+.post-small {
+    height: 37rem;
+    width: 100%;
+    // max-width: 15rem;
+    // overflow: hidden;
+    display: block;
+    // margin: 1rem 1rem 4rem;
+    // height: 30rem;
+    // display: inline-block;
+    // min-width: 20rem;
+    // width: 33%;
+    // margin: 0 2rem 6rem;
+
+    &-img {
+        width: 100%;
+        height: 90%;
+        display: block;
+
+        // 
+    }
+
+    img {
+        object-fit: cover;
+        background-position: center;
+    }
+
     &-details {
-        min-height: 10rem;
+        min-height: 10%;
+        display: block;
+        padding: 0.6rem 1rem;
+        border: 1px solid rgba(200, 200, 200, 1);
     }
 
     &-title {
         font-size: 1.4rem;
         text-align: left;
+        // font-family: 'Domine', serif;
+
+
+    }
+
+    &-description {
+        font-family: 'Open Sans', sans-serif;
+        color: rgb(70, 70, 70);
     }
 }
+
+h1,
+h2 {
+    font-family: 'Roboto Slab', serif;
+}
+
+.recipe-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    &-title {
+        font-size: 4rem;
+    }
+
+    blockquote {
+        background: rgb(240, 240, 240);
+        padding: 0.5rem 2rem;
+        font-size: 1.3rem;
+
+        &:before {
+            // content: '❝';
+            // color: rgb(220, 220, 220);
+            // font-size: 3rem;
+            // line-height: 1;
+
+            // padding-top: 1rem;
+        }
+    }
+
+
+}
+
+.ingredients-list {
+    padding: 1rem 3rem;
+    border: 1px solid rgb(70, 70, 70);
+
+    &-header {
+        font-size: 2rem;
+    }
+
+    p {
+        &:before {
+            content: "•";
+            margin: 1rem;
+        }
+    }
+}
+
+.recipe-page-details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 2rem 0;
+
+    .recipe-page-img {
+        // width: 75%;
+        // min-width: 15rem;
+        flex: 0 1 75%;
+    }
+
+    .recipe-page-details__text {
+        flex: 0 1 20%;
+        // margin: 0 1rem;
+
+        border: 1px solid rgb(199, 199, 199);
+        padding: 1rem;
+
+        span {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+    }
+}
+
+// &-img {
+//     width: 100%;
+//     margin: 2rem auto;
+// }
+
+// img {
+//     object-fit: cover;
+//     width: 100%;
+//     height: 30rem;
+// }

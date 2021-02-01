@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom"
 import sanityClient from "../client.js";
+import { Link } from "react-router-dom";
 import BlockContent from "@sanity/block-content-to-react";
+import Header from "./elements/Header";
+import Nav from "./elements/Nav";
 
 
 // sanity package to help with many images
@@ -40,9 +43,13 @@ export default function OnePost() {
                     }
                 },
                 body,
-                "name": author->name,
-                "authorImage":author->image,
-                youtube
+                description,
+                youtube,
+                ingredients,
+                prepTime,
+                cookTime,
+                servings,
+                ingredients
             }`,
             // indicate we are looking at a slug
             { slug }
@@ -53,36 +60,62 @@ export default function OnePost() {
 
 
 
-    if (!postData) return <div>Loading...</div>;
+    if (!postData) return (
+        <>
+            <Header />
+            <Nav />
+            <Link to={'/'}><button>‹ Back to all recipes</button></Link>
+            {/* <div className="loading-text">Setting the table...</div> */}
+        </>
+    );
 
     return (
         <div>
-            {/* Header title/author starts */}
-            <div>
-                <h2>{postData.title}</h2>
-                <div>
-                    {/* <img src={postData.mainImage.asset.url} /> */}
-                    <img src={urlFor(postData.authorImage).width(100).url()}
-                        alt="Thumbnail image of author" />
-                    <h4>{postData.name}</h4>
+            <Header />
+            <Nav />
+
+            <Link to={'/'}><button>‹ Back to recipes</button></Link>
+
+            <main className="recipe-page">
+                <h2 className="recipe-page-title">{postData.title}</h2>
+                <blockquote>{postData.description}</blockquote>
+
+
+                <div className="recipe-page-details">
+                    {postData.mainImage &&
+                        <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" className="recipe-page-img" />
+                    }
+                    <div className="recipe-page-details__text">
+                        <span><strong>Prep:</strong> {postData.prepTime}</span>
+                        <span><strong>Cook:</strong> {postData.cookTime}</span>
+                        <span><strong>Servings:</strong> {postData.servings}</span>
+                    </div>
                 </div>
-            </div>
-            {/* Header title/author stops */}
-            {postData.mainImage &&
-                <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" />
-            }
-            <div>
 
-                {/* Youtube video */}
-                {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
 
-                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-                <BlockContent
-                    blocks={postData.body}
-                    projectId={sanityClient.clientConfig.projectId}
-                    dataset={sanityClient.clientConfig.dataset}
-                />
-            </div>
+                <div>
+                    {/* Youtube video */}
+                    {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+                    {/* {postData.ingredients && <div>{postData.ingredients}</div>} */}
+                    {/* Ingredients are rendered as <p> */}
+                    <div className="ingredients-list">
+                        <h2 className="ingredients-list-header">Ingredients</h2>
+                        <BlockContent
+                            blocks={postData.ingredients}
+                            projectId={sanityClient.clientConfig.projectId}
+                            dataset={sanityClient.clientConfig.dataset}
+                        />
+                    </div>
+                    <div className="steps">
+                        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                        <BlockContent
+                            blocks={postData.body}
+                            projectId={sanityClient.clientConfig.projectId}
+                            dataset={sanityClient.clientConfig.dataset}
+                        />
+                    </div>
+                </div>
+            </main>
         </div>
     )
 }

@@ -5,13 +5,19 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Title (example: Gift-wrapping cookies)',
       type: 'string',
       validation: Rule => Rule.required().min(5).max(25).warning('Missing Title.').error('Missing Field: Title')
     },
     {
+      name: 'description',
+      title: 'Description (example: How to create a nice shimmering presentation using cellophane)',
+      type: 'string',
+      validation: Rule => Rule.required().min(5).max(30).warning('Missing Description.').error('Missing Field: Description')
+    },
+    {
       name: 'slug',
-      title: 'Slug',
+      title: 'Slug (Just press the Generate button)',
       type: 'slug',
       options: {
         source: 'title',
@@ -19,15 +25,15 @@ export default {
       },
       validation: Rule => Rule.required().warning('Missing slug. (Press Generate)').error('Missing Field: Slug')
     },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: { type: 'author' },
-    },
+    // {
+    //   name: 'author',
+    //   title: 'Author',
+    //   type: 'reference',
+    //   to: { type: 'author' },
+    // },
     {
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -48,22 +54,51 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-    },
+    // {
+    //   name: 'publishedAt',
+    //   title: 'Published at',
+    //   type: 'datetime',
+    // },
     //xxxxxxx
     {
       name: 'youtube',
-      title: 'YouTube URL',
-      type: 'url'
+      title: 'YouTube URL (example: https://www.youtube.com/watch?v=zeprXdBFjiw)',
+      type: 'string'
     },
     //xxxxxxxxxx
     {
+      name: 'prepTime',
+      title: 'Prep time (example: 20 mins)',
+      type: 'string'
+    },
+    {
+      name: 'cookTime',
+      title: 'Cook time (example: 40 mins)',
+      type: 'string'
+    },
+    {
+      name: 'servings',
+      title: 'Servings',
+      type: 'string'
+    },
+    {
+      name: 'ccc',
+      title: 'ccc',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags'
+      }
+    },
+    {
+      name: 'ingredients',
+      title: 'Ingredient List (Make sure to use Bullet-points. example:    • 1 tsp sugar)',
+      type: 'ingredientsContent'
+    },
+    {
       name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      title: 'Steps (Make sure to click the button so it uses Numbers. example: 1. Give Draco a treat)',
+      type: 'blockContent'
     },
   ],
 
