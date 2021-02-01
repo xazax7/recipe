@@ -43,10 +43,10 @@ export default function AllPosts() {
 
         , []) // 
 
+
     return <div>
 
-        <Header />
-        <Nav />
+
         <main className="post-list">
             <h1>Latest Recipes</h1>
 

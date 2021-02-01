@@ -62,8 +62,6 @@ export default function OnePost() {
 
     if (!postData) return (
         <>
-            <Header />
-            <Nav />
             <Link to={'/'}><button>‹ Back to all recipes</button></Link>
             {/* <div className="loading-text">Setting the table...</div> */}
         </>
@@ -71,8 +69,6 @@ export default function OnePost() {
 
     return (
         <div>
-            <Header />
-            <Nav />
 
             <Link to={'/'}><button>‹ Back to recipes</button></Link>
 

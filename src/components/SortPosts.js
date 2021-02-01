@@ -1,47 +1,20 @@
-
-import React,
-{
-    useEffect,
-    useState
-}
-
-    from 'react';
+import React, { useEffect, useState } from 'react';
 import sanityClient from "../client.js";
-
-import {
-    Link
-}
-
-    from "react-router-dom";
-import Header from "./elements/Header"
-import Nav from "./elements/Nav"
+import { useParams, useLocation, Link } from "react-router-dom"
 
 export default function SortPosts() {
     // set up useState
     const [allPostsData,
         setAllPosts] = useState(null);
+    const { slug } = useParams();
+    let location = useLocation();
 
-    // fetch all data from sanity with a groc query
     useEffect(() => {
+        console.log("myparams", slug);
+
         sanityClient.fetch( // GROC query
 
-            // All(*) that have a type equal to post.
-            // then query for:
-            // `*[_type=="post"] {
-
-            //         title,
-            //         slug,
-            //         description,
-            //         mainImage {
-            //             asset-> {
-            //                 _id,
-            //                 url
-            //             }
-            //         }
-
-            //     }
-            `*["hot" in ccc] {
-
+            `*["${slug}" in ccc] {
                     title,
                     slug,
                     description,
@@ -56,14 +29,13 @@ export default function SortPosts() {
 
                 `) // set all the data to setAllposts (setting the state)
             .then((data) => setAllPosts(data)).then(console.log("DONE")).catch(console.error);
-        // [] makes sure it stops, doesn't continue running.
+
     }
 
-        , []) //
+        , [])
 
     return <div>
-        {/* <Header />
-        <Nav /> */}
+
         <main className="post-list"><h1>Latest Recipes</h1> {
             allPostsData && allPostsData.map((post, index) => (
                 <Link to={'/' + post.slug.current}
