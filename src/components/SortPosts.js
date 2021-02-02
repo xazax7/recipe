@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import sanityClient from "../client.js";
 import { useParams, useLocation, Link } from "react-router-dom"
+import FadeIn from "react-fade-in"
 
 export default function SortPosts() {
     // set up useState
@@ -14,7 +15,7 @@ export default function SortPosts() {
 
         sanityClient.fetch( // GROC query
 
-            `*["${slug}" in ccc] {
+            `*["${slug}" in type] {
                     title,
                     slug,
                     description,
@@ -34,38 +35,52 @@ export default function SortPosts() {
 
         , [])
 
+    if (!allPostsData) return (
+        <>
+            {/* <Link to={'/'}><button>‹ Back to all recipes</button></Link> */}
+            {/* <div className="loading-text">Setting the table...</div> */}
+            {/* <h1>No recipes for {slug} yet!</h1> */}
+            <div className="loading">🍴</div>
+        </>
+    );
+
+
     return <div>
 
-        <main className="post-list"><h1>Latest Recipes</h1> {
-            allPostsData && allPostsData.map((post, index) => (
-                <Link to={'/' + post.slug.current}
+        <main className="post-list">
 
-                    key={
-                        post.slug.current
-                    }
 
-                    className="post-small-container"> <span className="post-small" key={
-                        index
-                    }
+            {allPostsData < 1 ? <h1>No {slug} recipes yet!</h1> : <h1>{slug}</h1>}
+            {
 
-                    > <img src={
-                        post.mainImage.asset.url
-                    }
+                allPostsData && allPostsData.map((post, index) => (
 
-                        height="300" className="post-small-img" alt="image for recipe" /> <span className="post-small-details"> <h2 className="post-small-title"> {
-                            post.title
-                        }
+                    <Link
+                        to={'/' + post.slug.current}
+                        key={post.slug.current}
+                        className="post-small-container">
+                        <FadeIn transitionDuration="1000">
+                            <span className="post-small" key={index}>
+                                <img src={post.mainImage.asset.url}
+                                    height="300"
+                                    className="post-small-img"
+                                    alt="image for recipe" />
+                                <span className="post-small-details">
+                                    <h2 className="post-small-title">
+                                        {post.title}
+                                    </h2>
+                                    {post.description && <p className="post-small-description"> {post.description}</p>}
+                                </span>
+                            </span>
+                        </FadeIn>
+                    </Link>
+                ))
 
-                        </h2> {
-                                post.description && <p className="post-small-description"> {
-                                    post.description
-                                }
 
-                                </p>
-                            }
+            }
 
-                        </span> </span> </Link>))
-        }
+
+
 
         </main></div>
 }

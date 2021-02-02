@@ -1,21 +1,12 @@
-import React,
-{
-    useEffect,
-    useState
-}
-
-    from 'react';
+import React, { useEffect, useState } from 'react';
 import sanityClient from "../client.js";
 
-import {
-    Link
-}
-
-    from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Header from "./elements/Header"
 import Nav from "./elements/Nav"
 // import post from '../../recipeblog/schemas/post.js';
+import FadeIn from 'react-fade-in';
 
 export default function AllPosts() {
     // set up useState
@@ -30,6 +21,8 @@ export default function AllPosts() {
             `*[_type == "post"]{
                 title,
                 slug,
+                type,
+                description,
                 mainImage{
                     asset->{
                         _id,
@@ -53,23 +46,25 @@ export default function AllPosts() {
 
 
             {allPostsData && allPostsData.map((post, index) => (
+
                 <Link
                     to={'/' + post.slug.current}
                     key={post.slug.current}
                     className="post-small-container"
-                >
-                    <span className="post-small"
-                        key={index}>
-                        <img src={post.mainImage.asset.url}
-                            height="300"
-                            className="post-small-img"
-                            alt="image for recipe" />
-                        <span className="post-small-details">
-                            <h2 className="post-small-title"> {post.title}</h2>
-                            {post.description && <p className="post-small-description"> {post.description}</p>}
-                        </span>
-                    </span>
+                ><FadeIn transitionDuration="1000">
+                        <span className="post-small"
+                            key={index}>
+                            <img src={post.mainImage.asset.url}
+                                height="300"
+                                className="post-small-img"
+                                alt="image for recipe" />
+                            <span className="post-small-details">
+                                <h2 className="post-small-title"> {post.title}</h2>
+                                {post.description && <p className="post-small-description">{post.description}</p>}
+                            </span>
+                        </span></FadeIn>
                 </Link>
+
             ))
             }
 

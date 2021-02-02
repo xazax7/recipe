@@ -20,10 +20,10 @@ function App() {
         <Route component={AllPosts} path="/" exact />
 
         {/* Find the 'slug' of the blog post that we will declare in our sanity studio, which will then be the link/url*/}
-        <Route component={OnePost} path="/:slug" />
+        <Route component={OnePost} exact path="/:slug" />
 
         {/* <Route component={SortPosts} path="/:slug" /> */}
-        <Route path='/:slug' component={(props) => <SortPosts {...props} key={window.location.pathname} />} />
+        <Route path='/tags/:slug' exact component={(props) => <SortPosts {...props} key={window.location.pathname} />} />
 
       </div>
     </BrowserRouter>

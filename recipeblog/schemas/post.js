@@ -48,12 +48,12 @@ export default {
         return name ? true : 'Missing image upload for Main Image'
       })
     },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
-    },
+    // {
+    //   name: 'categories',
+    //   title: 'Categories',
+    //   type: 'array',
+    //   of: [{ type: 'reference', to: { type: 'category' } }],
+    // },
     // {
     //   name: 'publishedAt',
     //   title: 'Published at',
@@ -82,8 +82,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'ccc',
-      title: 'ccc',
+      name: 'type',
+      title: 'Type (Options: Breakfast, Lunch, Dinner, Dessert, Drinks. Can add multiple types, press enter after each type.)',
       type: 'array',
       of: [{ type: 'string' }],
       options: {
@@ -92,12 +92,12 @@ export default {
     },
     {
       name: 'ingredients',
-      title: 'Ingredient List (Make sure to use Bullet-points. example:    • 1 tsp sugar)',
+      title: 'Ingredient List (One ingredient per line. No bullet points. Make sure there are no empty lines)',
       type: 'ingredientsContent'
     },
     {
       name: 'body',
-      title: 'Steps (Make sure to click the button so it uses Numbers. example: 1. Give Draco a treat)',
+      title: 'Steps (Press Enter after each step. Make sure there are no empty lines)',
       type: 'blockContent'
     },
   ],

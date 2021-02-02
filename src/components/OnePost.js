@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BlockContent from "@sanity/block-content-to-react";
 import Header from "./elements/Header";
 import Nav from "./elements/Nav";
+import FadeIn from "react-fade-in"
 
 
 // sanity package to help with many images
@@ -49,7 +50,8 @@ export default function OnePost() {
                 prepTime,
                 cookTime,
                 servings,
-                ingredients
+                ingredients,
+                type
             }`,
             // indicate we are looking at a slug
             { slug }
@@ -62,56 +64,60 @@ export default function OnePost() {
 
     if (!postData) return (
         <>
-            <Link to={'/'}><button>‹ Back to all recipes</button></Link>
+            {/* <Link to={'/'}><button>‹ Back to all recipes</button></Link> */}
             {/* <div className="loading-text">Setting the table...</div> */}
+            <div className="loading">🍴</div>
         </>
     );
 
     return (
         <div>
 
-            <Link to={'/'}><button>‹ Back to recipes</button></Link>
 
-            <main className="recipe-page">
-                <h2 className="recipe-page-title">{postData.title}</h2>
-                <blockquote>{postData.description}</blockquote>
+            <FadeIn transitionDuration="1500">
+                <main className="recipe-page">
+
+                    <h2 className="recipe-page-title">{postData.title}</h2>
+                    <blockquote><span>“</span>{postData.description}<span>”</span></blockquote>
 
 
-                <div className="recipe-page-details">
-                    {postData.mainImage &&
-                        <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" className="recipe-page-img" />
-                    }
-                    <div className="recipe-page-details__text">
-                        <span><strong>Prep:</strong> {postData.prepTime}</span>
-                        <span><strong>Cook:</strong> {postData.cookTime}</span>
-                        <span><strong>Servings:</strong> {postData.servings}</span>
+                    <div className="recipe-page-details">
+                        {postData.mainImage &&
+                            <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" className="recipe-page-img" />
+                        }
+                        <div className="recipe-page-details__text">
+                            <span><strong>Prep:</strong> {postData.prepTime}</span>
+                            <span><strong>Cook:</strong> {postData.cookTime}</span>
+                            <span><strong>Servings:</strong> {postData.servings}</span>
+                        </div>
                     </div>
-                </div>
 
 
-                <div>
-                    {/* Youtube video */}
-                    {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
-                    {/* {postData.ingredients && <div>{postData.ingredients}</div>} */}
-                    {/* Ingredients are rendered as <p> */}
-                    <div className="ingredients-list">
-                        <h2 className="ingredients-list-header">Ingredients</h2>
-                        <BlockContent
-                            blocks={postData.ingredients}
-                            projectId={sanityClient.clientConfig.projectId}
-                            dataset={sanityClient.clientConfig.dataset}
-                        />
+                    <div>
+                        {/* Youtube video */}
+                        {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+                        {/* {postData.ingredients && <div>{postData.ingredients}</div>} */}
+                        {/* Ingredients are rendered as <p> */}
+                        <div className="ingredients-list">
+                            <h2 className="ingredients-list-header">Ingredients</h2>
+                            <BlockContent
+                                blocks={postData.ingredients}
+                                projectId={sanityClient.clientConfig.projectId}
+                                dataset={sanityClient.clientConfig.dataset}
+                            />
+                        </div>
+                        <div className="steps">
+                            <h2>Steps</h2>
+                            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                            <BlockContent
+                                blocks={postData.body}
+                                projectId={sanityClient.clientConfig.projectId}
+                                dataset={sanityClient.clientConfig.dataset}
+                            />
+                        </div>
                     </div>
-                    <div className="steps">
-                        {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-                        <BlockContent
-                            blocks={postData.body}
-                            projectId={sanityClient.clientConfig.projectId}
-                            dataset={sanityClient.clientConfig.dataset}
-                        />
-                    </div>
-                </div>
-            </main>
+                </main>
+            </FadeIn>
         </div>
     )
 }

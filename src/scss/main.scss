@@ -9,13 +9,30 @@
     align-items: center;
     flex-direction: column;
 
+    &:after {
+        display: block;
+        width: 100%;
+        height: 10px;
+        background: black;
+    }
+
     &-title {
-        font-size: 3rem;
+        font-size: 3.4rem;
         font-family: 'Kristi', cursive;
-        border-bottom: 1px solid black;
-        line-height: 0.7;
+
+        &:after {
+            display: block;
+            width: 100%;
+            height: 10px;
+            background: black;
+        }
+
+        // border-bottom: 1px solid black;
+
+
+        line-height: 1;
         width: 80%;
-        max-width: 1336px;
+        max-width: 1000px;
         text-align: center;
     }
 }
@@ -59,21 +76,31 @@
         &__link {
             display: inline-block;
             margin: 0.3rem;
+            font-family: 'open sans', sans-serif;
 
             &-a {
                 color: black;
                 text-decoration: none;
                 padding: 0.3rem;
+                transition: all 0.1s;
 
+                &:hover {
+                    color: black;
+                    text-shadow: 1px 1px 2px grey;
+                    // text-decoration: underline;
+                }
             }
         }
     }
 }
 
 .post-list {
+
+
     h1 {
         display: block;
         width: 100%;
+        text-transform: capitalize;
     }
 
     width: 80%;
@@ -84,7 +111,7 @@
     justify-content: space-between;
     align-items: stretch;
     align-content: stretch;
-    margin: 0 auto;
+    margin: 3rem auto;
 }
 
 .post-small-container {
@@ -105,26 +132,29 @@
 
 }
 
+body {
+    min-height: 101vh;
+}
+
+.back-btn {
+    flex: 100%;
+    display: block;
+    width: 100%;
+}
+
+
 
 .post-small {
+    // animation: fadeIn 3s infinite;
     height: 37rem;
     width: 100%;
-    // max-width: 15rem;
-    // overflow: hidden;
     display: block;
-    // margin: 1rem 1rem 4rem;
-    // height: 30rem;
-    // display: inline-block;
-    // min-width: 20rem;
-    // width: 33%;
-    // margin: 0 2rem 6rem;
 
     &-img {
         width: 100%;
         height: 90%;
         display: block;
 
-        // 
     }
 
     img {
@@ -149,7 +179,19 @@
 
     &-description {
         font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
         color: rgb(70, 70, 70);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
@@ -158,10 +200,41 @@ h2 {
     font-family: 'Roboto Slab', serif;
 }
 
+.loading {
+    padding-top: 20vh;
+    font-size: 5rem;
+    text-align: center;
+    width: 100vw;
+    overflow: hidden;
+    animation: bounce 1s ease infinite;
+    transform-origin: center;
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 .recipe-page {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    margin: 2rem auto;
+    // WHY DO I NEED PADDING:0 HERE????
+    padding: 0;
+
+    // YOUTUBE
+    iframe {
+        display: block;
+        margin-bottom: 2rem;
+    }
 
     &-title {
         font-size: 4rem;
@@ -171,6 +244,17 @@ h2 {
         background: rgb(240, 240, 240);
         padding: 0.5rem 2rem;
         font-size: 1.3rem;
+        line-height: 1rem;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 3.4rem;
+
+            padding: 1rem 1rem 0;
+            font-family: serif;
+            color: rgb(200, 200, 200);
+        }
 
         &:before {
             // content: '❝';
@@ -189,16 +273,30 @@ h2 {
     padding: 1rem 3rem;
     border: 1px solid rgb(70, 70, 70);
 
+    display: inline-block;
+
     &-header {
-        font-size: 2rem;
+
+        margin-bottom: 1rem;
     }
 
     p {
+        font-size: 1.4rem;
+        line-height: 2rem;
+
         &:before {
             content: "•";
-            margin: 1rem;
+            margin: 0 1rem 0 0;
         }
     }
+
+    margin-bottom:3rem;
+}
+
+h2,
+.ingredients-list-header {
+    font-style: italic;
+    font-size: 30px;
 }
 
 .recipe-page-details {
@@ -211,14 +309,11 @@ h2 {
     margin: 2rem 0;
 
     .recipe-page-img {
-        // width: 75%;
-        // min-width: 15rem;
         flex: 0 1 75%;
     }
 
     .recipe-page-details__text {
         flex: 0 1 20%;
-        // margin: 0 1rem;
 
         border: 1px solid rgb(199, 199, 199);
         padding: 1rem;
@@ -231,13 +326,66 @@ h2 {
     }
 }
 
-// &-img {
-//     width: 100%;
-//     margin: 2rem auto;
-// }
+@for $i from 1 through 10 {
+    .steps div p:nth-of-type(#{$i}):before {
+        content: '#{$i}.';
+        margin: 0 1rem;
+        // padding: 0 2rem;
+    }
+}
 
-// img {
-//     object-fit: cover;
-//     width: 100%;
-//     height: 30rem;
-// }
+.steps {
+
+    margin-bottom: 8rem;
+
+    p {
+        margin: 1rem 0;
+        font-size: 1.3rem;
+    }
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+
+.bg-left {
+    left: 0;
+}
+
+.bg-left,
+.bg-right {
+    top: 0;
+    background: url('../../images/pattern.png');
+    width: 8vw;
+    height: 100vh;
+    position: absolute;
+}
+
+.bg-right {
+    right: 0;
+}
+
+.bg-right {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+
+
+}
+
+.bg-left {
+    position: fixed;
+    left: 0vw;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0) 100%);
+}
