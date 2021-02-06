@@ -36,37 +36,46 @@ export default function AllPosts() {
 
         , []) // 
 
+    if (!allPostsData) return (
+        <>
+            {/* <Link to={'/'}><button>‹ Back to all recipes</button></Link> */}
+            {/* <div className="loading-text">Setting the table...</div> */}
+            <div className="loading">🍴</div>
+        </>
+    );
 
-    return <div>
+
+    return <main className="main">
+
+        <FadeIn transitionDuration="300" wrapperTag="h1" className="page-header">
+            Latest Recipes
+        </FadeIn>
 
 
-        <main className="post-list">
-            <h1>Latest Recipes</h1>
 
 
-
+        {/* Fade in for each individual post. delay=300 is added for each consecutive post */}
+        <FadeIn transitionDuration="1000" className="post-list" wrapperTag="main" childClassName="post-small-container" delay="300">
             {allPostsData && allPostsData.map((post, index) => (
-
                 <Link
                     to={'/' + post.slug.current}
                     key={post.slug.current}
-                    className="post-small-container"
-                ><FadeIn transitionDuration="1000">
-                        <span className="post-small"
-                            key={index}>
-                            <img src={post.mainImage.asset.url}
-                                height="300"
-                                className="post-small-img"
-                                alt="image for recipe" />
-                            <span className="post-small-details">
-                                <h2 className="post-small-title"> {post.title}</h2>
-                                {post.description && <p className="post-small-description">{post.description}</p>}
-                            </span>
-                        </span></FadeIn>
+                    className="post-small-link"
+                >
+                    <span className="post-small"
+                        key={index}>
+                        <img src={post.mainImage.asset.url}
+                            height="300"
+                            className="post-small-img"
+                            alt="image for recipe" />
+                        <span className="post-small-details">
+                            <h2 className="post-small-title"> {post.title}</h2>
+                            {post.description && <p className="post-small-description">{post.description}</p>}
+                        </span>
+                    </span>
                 </Link>
-
             ))
             }
-
-        </main></div>
+        </FadeIn>
+    </main>
 }

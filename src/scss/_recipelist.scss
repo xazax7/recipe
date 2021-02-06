@@ -1,0 +1,111 @@
+// h1 {
+//     display: block;
+//     width: 100%;
+//     text-transform: capitalize;
+// }
+@import './_variables.scss';
+
+.page-header {
+    width: 80%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+    line-height: 4rem;
+}
+
+.post-list {
+    width: 80%;
+    max-width: $maxWidth;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    // align-items: stretch;
+    // align-content: stretch;
+
+    // margin: 3rem auto;
+    a {
+        color: $darkFontColor;
+        text-decoration: none;
+    }
+}
+
+
+.post-small {
+
+    height: auto;
+
+    &-container {
+        flex: 1 1 50%;
+        min-width: 400px;
+        text-decoration: none;
+        color: black;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        &:first-of-type {
+            flex: 0 0 100%;
+            // display: block;
+            // width: 100%;
+
+
+            .post-small {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                // justify-content: stretch;
+
+                .post-small-img {
+                    flex: 1 1;
+                    display: inline-block;
+
+                }
+
+                .post-small-details {
+                    border: none;
+                    padding-bottom: 10%;
+                    background: $darkFontColor;
+                    flex: 1 1;
+
+                    h2 {
+                        font-size: 190%;
+                        color: white;
+                    }
+
+                    .post-small-description {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-img {
+        width: 100%;
+        height: 15rem;
+        display: block;
+        object-fit: cover;
+        background-position: center;
+    }
+
+
+    &-details {
+        min-height: 10%;
+        display: block;
+        padding: 0.6rem 1rem;
+        border: 1px solid $lightBorder;
+    }
+
+    &-title {
+        font-size: 1.5rem;
+    }
+
+    &-description {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.9rem;
+        color: rgb(70, 70, 70);
+    }
+}

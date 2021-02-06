@@ -45,12 +45,12 @@ export default function SortPosts() {
     );
 
 
-    return <div>
+    return <main className="main">
+        {allPostsData < 1 ? <FadeIn transitionDuration="300" childTag="h1" childClass="page-header">No {slug} recipes yet!</FadeIn> : <FadeIn transitionDuration="300" childTag="h1" childClass="page-header">{slug}</FadeIn>}
+        <div className="post-list">
 
-        <main className="post-list">
 
 
-            {allPostsData < 1 ? <h1>No {slug} recipes yet!</h1> : <h1>{slug}</h1>}
             {
 
                 allPostsData && allPostsData.map((post, index) => (
@@ -82,5 +82,5 @@ export default function SortPosts() {
 
 
 
-        </main></div>
+        </div></main>
 }

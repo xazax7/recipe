@@ -1,0 +1,27 @@
+.nav {
+    &-list {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+
+        &__link {
+            display: inline-block;
+            margin: 0.3rem;
+            font-family: 'open sans', sans-serif;
+
+            &-a {
+                color: $darkFontColor;
+                text-decoration: none;
+                padding: 0.3rem;
+                transition: all 0.3s;
+
+                &:hover {
+                    text-shadow: 1px 1px 2px grey;
+                    // text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    margin-bottom:3rem;
+}

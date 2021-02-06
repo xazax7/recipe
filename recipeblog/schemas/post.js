@@ -7,13 +7,13 @@ export default {
       name: 'title',
       title: 'Title (example: Gift-wrapping cookies)',
       type: 'string',
-      validation: Rule => Rule.required().min(5).max(25).warning('Missing Title.').error('Missing Field: Title')
+      validation: Rule => Rule.required().min(1).max(30).warning('Missing Title.').error('Title too long or too short.')
     },
     {
       name: 'description',
-      title: 'Description (example: How to create a nice shimmering presentation using cellophane)',
+      title: 'Short Description (example: How to create a nice shimmering presentation using cellophane)',
       type: 'string',
-      validation: Rule => Rule.required().min(5).max(30).warning('Missing Description.').error('Missing Field: Description')
+      validation: Rule => Rule.required().min(1).max(75).warning('Missing Description.').error('Description too long or too short.')
     },
     {
       name: 'slug',
@@ -82,8 +82,13 @@ export default {
       type: 'string'
     },
     {
+      name: 'longerDesc',
+      title: 'Longer description. (Shows before recipe/steps)',
+      type: 'blockContent'
+    },
+    {
       name: 'type',
-      title: 'Type (Options: Breakfast, Lunch, Dinner, Dessert, Drinks. Can add multiple types, press enter after each type.)',
+      title: 'Type (Options: breakfast, lunch, dinner, dessert, drinks. Can add multiple types, press enter after each type.)',
       type: 'array',
       of: [{ type: 'string' }],
       options: {
@@ -92,12 +97,12 @@ export default {
     },
     {
       name: 'ingredients',
-      title: 'Ingredient List (One ingredient per line. No bullet points. Make sure there are no empty lines)',
-      type: 'ingredientsContent'
+      title: 'Ingredient List (Remember to use bullet points)',
+      type: 'blockContent'
     },
     {
       name: 'body',
-      title: 'Steps (Press Enter after each step. Make sure there are no empty lines)',
+      title: 'Steps (Remember to put steps in a numbered list)',
       type: 'blockContent'
     },
   ],

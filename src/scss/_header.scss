@@ -1,0 +1,21 @@
+@import './_variables.scss';
+
+.header {
+    min-height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+
+
+    &-title {
+        font-size: 3.4rem;
+        font-family: 'Kristi', cursive;
+        line-height: 1;
+        width: 80%;
+        max-width: 1000px;
+        text-align: center;
+        color: $darkFontColor;
+    }
+}

@@ -1,0 +1,162 @@
+.recipe-page {
+    max-width: $maxWidth;
+    width: 80%;
+    // width: 80%;
+    // WHY DO I NEED PADDING:0 HERE????
+    padding: 0;
+
+    // YOUTUBE
+    iframe {
+        display: block;
+        margin-bottom: 2rem;
+        width: 20rem;
+        height: 15rem;
+    }
+
+    &-title {
+        font-size: 4rem;
+        margin: 1.4rem 0;
+    }
+
+    blockquote {
+        background: rgb(240, 240, 240);
+        padding: 0.5rem 2rem;
+        font-size: 1.3rem;
+        line-height: 1rem;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 3.4rem;
+
+            padding: 1rem 1rem 0;
+            font-family: serif;
+            color: rgb(200, 200, 200);
+        }
+
+    }
+
+
+}
+
+.recipe-page-description {
+    margin: 3rem 0;
+}
+
+.ingredients-list {
+    padding: 2rem 4rem;
+    border: 1px solid rgb(70, 70, 70);
+
+    display: inline-block;
+
+    &-header {
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-family: $headerFont;
+        font-size: 2rem;
+        margin: 1rem 0;
+
+        &:not(:first-of-type) {
+            margin-top: 3rem;
+        }
+    }
+
+    li {
+
+        padding-left: 1rem;
+        margin: 1rem 0;
+
+        &::marker {
+            content: "◦";
+        }
+    }
+
+    margin-bottom:3rem;
+}
+
+.recipe-header {
+    font-family: $headerFont;
+    font-style: italic;
+    font-size: 3rem;
+}
+
+.recipe-page-details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 2rem 0;
+
+    .recipe-page-img {
+        flex: 1 1 80%;
+        min-width: 400px;
+    }
+
+    .recipe-page-details__text {
+        flex: 1 1 auto;
+        background: $whiteBg;
+
+        border: 1px solid $lightBorder;
+        padding: 2rem 1rem;
+
+        span {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.5rem;
+            font-size: 1rem;
+        }
+
+    }
+}
+
+.steps {
+
+
+    p {
+        margin: 1rem 0;
+        font-size: 1.3rem;
+    }
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+li {
+    font-size: 1.5rem;
+    margin: 1.3rem 0;
+    line-height: 1.5rem;
+    // display: block;
+    font-family: 'Open Sans', sans-serif;
+
+    &::marker {
+        font-size: 1rem;
+    }
+}
+
+.steps {
+    margin: 2rem;
+
+    .recipe-header {
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        font-size: 2rem;
+
+        &:not(:first-of-type) {
+            margin-top: 4rem;
+        }
+    }
+
+    li {
+        margin-left: 2rem;
+    }
+}
