@@ -46,7 +46,7 @@ export default function SortPosts() {
 
 
     return <main className="main">
-        {allPostsData < 1 ? <FadeIn transitionDuration="300" childTag="h1" childClass="page-header">No {slug} recipes yet!</FadeIn> : <FadeIn transitionDuration="300" childTag="h1" childClass="page-header">{slug}</FadeIn>}
+        {allPostsData < 1 ? <FadeIn transitionDuration="300" childTag="h1" className="page-header">{`${slug} recipes coming soon!`}</FadeIn> : <FadeIn transitionDuration="300" wrapperTag="h1" className="page-header">{slug}</FadeIn>}
         <div className="post-list">
 
 

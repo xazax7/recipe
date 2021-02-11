@@ -8,6 +8,7 @@ import SortPosts from "./components/SortPosts.js"
 import Nav from "./components/elements/Nav.js"
 import Header from "./components/elements/Header.js";
 import { Link } from "react-router-dom";
+import Footer from "./components/elements/Footer"
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
 
         {/* <Route component={SortPosts} path="/:slug" /> */}
         <Route path='/tags/:slug' exact component={(props) => <SortPosts {...props} key={window.location.pathname} />} />
+
+        <Route component={Footer} />
 
       </div>
     </BrowserRouter>

@@ -55,7 +55,7 @@ export default function AllPosts() {
 
 
         {/* Fade in for each individual post. delay=300 is added for each consecutive post */}
-        <FadeIn transitionDuration="1000" className="post-list" wrapperTag="main" childClassName="post-small-container" delay="300">
+        <FadeIn transitionDuration="1000" className="post-list" wrapperTag="main" childClassName="post-small-container all-recipes-post" delay="300">
             {allPostsData && allPostsData.map((post, index) => (
                 <Link
                     to={'/' + post.slug.current}
@@ -67,7 +67,7 @@ export default function AllPosts() {
                         <img src={post.mainImage.asset.url}
                             height="300"
                             className="post-small-img"
-                            alt="image for recipe" />
+                            alt={post.title} />
                         <span className="post-small-details">
                             <h2 className="post-small-title"> {post.title}</h2>
                             {post.description && <p className="post-small-description">{post.description}</p>}

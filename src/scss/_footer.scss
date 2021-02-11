@@ -1,0 +1,102 @@
+.footer {
+    padding: 4rem;
+    margin-top: 7rem;
+    width: 100%;
+    min-height: 10rem;
+    background: $darkFontColor;
+
+    * {
+        // border: 1px solid orange;
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    div {
+        // flex: 1 1 50%;
+        // display: flex;
+        // flex-direction: column;
+    }
+
+
+    &-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: auto;
+        padding: 1rem;
+    }
+
+    &-title {
+        font-size: 4rem;
+        font-family: 'Kristi', cursive;
+
+        span {
+            display: block;
+            font-size: 2rem;
+        }
+    }
+
+    &-newsletter {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        h4 {
+            font-size: 1.5rem;
+
+            color: white;
+            font-family: $headerFont;
+
+        }
+
+        label {
+            color: white;
+            font-family: sans-serif;
+        }
+
+        input {
+            padding: 0.2rem 0.5rem;
+            border: none;
+            width: 18rem;
+            font-size: 1.2rem;
+            margin: 0.3rem 0;
+        }
+
+        button {
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+
+            &:hover {
+                background: $color3;
+
+            }
+        }
+    }
+
+    &-nav {
+        flex: auto;
+    }
+
+    &-nav-list {
+        flex-direction: column;
+        justify-content: flex-start;
+        // align-items: flex-start;
+    }
+
+    &-link {
+        color: white;
+
+        &:hover {
+            background: white;
+            color: $color3;
+        }
+
+    }
+}

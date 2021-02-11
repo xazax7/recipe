@@ -1,45 +1,56 @@
 // @import url('https://fonts.googleapis.com/css2?family=Domine&family=Kristi&display=swap');
 // @import './reset';
-@import './_variables';
+// @import './_variables';
 @import './_header';
 @import './_nav';
 @import './_recipelist';
 @import './_recipe';
+@import './footer';
+@import './responsive';
 
 @import url('https://fonts.googleapis.com/css2?family=Kristi&family=Roboto+Slab:wght@300&family=Open+Sans:wght@300?family=Antic+Slab&display=swap');
 
+// ssd
 // So scroll bar doesnt 'pop' into existence on page load
 body {
     min-height: 101vh;
+    background: $bgColor;
 }
+
+.nav,
+.header,
+.page-header,
+.post-list {
+    max-width: $maxWidth;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// footer is not involved, .footer-content
 
 h1,
 h2,
 h3 {
     // font-family: 'Antic Slab', serif !important;
-    font-family: 'Roboto Slab', serif;
+    font-family: $headerFont;
 }
 
 
 .back-btn {
     background: none;
-    padding: 1rem 1rem;
+    padding: 1rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
     letter-spacing: 0px;
-    color: $medFontColor;
+    // color: $medFontColor;
+    color: black;
+    transition: width 1s;
 
     &:hover {
         background: $lightBg;
     }
-}
-
-
-h1,
-h2 {
-    font-family: 'Roboto Slab', serif;
-    color: $darkFontColor;
 }
 
 .loading {
@@ -50,9 +61,17 @@ h2 {
     overflow: hidden;
     animation: bounce 1s ease infinite;
     transform-origin: center;
+    min-height: 70vh;
+
 }
 
+main {
+    min-height: 70vh;
+}
 
+* {
+    // transition: 0.4s;
+}
 
 
 @keyframes bounce {
@@ -86,10 +105,6 @@ h2 {
 }
 
 .bg-right {
-    right: 0;
-}
-
-.bg-right {
     position: fixed;
     left: 0;
     top: 0;
@@ -106,5 +121,5 @@ h2 {
     top: 0;
     width: 100vw;
     z-index: -1;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, $bgColor 85%, rgba(255, 255, 255, 0) 100%);
 }
