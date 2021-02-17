@@ -1,22 +1,35 @@
 $darkFontColor: rgb(143, 19, 19);
 $medFontColor: rgb(180, 49, 49);
-$maxWidth: 1000px;
-$lightBg: rgb(240, 240, 240);
+
+$maxWidth: 1200px;
+
+
+
+$lightBg: rgb(255, 255, 255);
 $whiteBg:white;
 $lightBorder: rgb(220, 220, 220);
 $headerFont: serif;
 $darkFontColor: #805c78;
-$bgColor:#f7f1f5;
+$bgColor:#ffffff;
 $color2: rgba(255, 255, 255, 0.575);
 $color3: #d39fc8;
 
 
-$headerFont: "Roboto Slab",
-serif;
 // $headerFont: 'monospace';
 $titleFont: 'Kristi',
 cursive;
-$linkFont: 'Open Sans',
-sans-serif;
+$linkFont: 'Lora',
+serif;
+
 
 $recipeBorderSize:0.15rem;
+
+$titleColor:rgb(42, 42, 43);
+$titleColorShadow:rgba(0, 0, 0, 0.562);
+$darkColor: rgb(56, 119, 255);
+$decorColor: rgb(68, 144, 231);
+$decorColorBg2: rgb(151, 198, 255);
+// $decorColorBg2: rgb(86, 245, 126);
+$decorColorLight: rgb(241, 244, 247);
+$white:white;
+$black: black;

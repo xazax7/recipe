@@ -14,12 +14,12 @@ export default function Footer() {
 
                     <span>Copyright © {new Date().getFullYear()} darlingdinnersready.com</span>
                 </div>
-                <div className="footer-newsletter footer-section">
+                {/* <div className="footer-newsletter footer-section">
                     <h4>Get dinner ideas and recipes straight to your inbox!</h4>
                     <label for="newsletter-email">E-mail</label>
                     <input type="text" id="newsletter-email"></input>
                     <button>Subscribe</button>
-                </div>
+                </div> */}
                 <div className="footer-section footer-nav">
                     <ul className="nav-list footer-nav-list">
                         <Link to={'/'} className="nav-list__link footer-link">All Recipes</Link>

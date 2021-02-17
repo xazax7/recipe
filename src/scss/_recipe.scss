@@ -1,3 +1,241 @@
+@import './_variables.scss';
+
+
+/********************
+
+        Grid
+
+********************/
+.recipe {
+    display: grid;
+    // grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 5rem 2rem;
+    grid-template-areas:
+        "recipe-img recipe-info"
+        "recipe-desc recipe-desc"
+        "recipe-ingredients recipe-steps";
+}
+
+.recipe-img {
+    grid-area: recipe-img;
+}
+
+.recipe-info {
+    grid-area: recipe-info;
+}
+
+.recipe-desc {
+    grid-area: recipe-desc;
+}
+
+
+.recipe-ingredients {
+    grid-area: recipe-ingredients;
+}
+
+.recipe-steps {
+    grid-area: recipe-steps;
+}
+
+
+
+/********************
+
+        Styling
+
+********************/
+
+
+.recipe {
+
+    // First row
+    &-img {
+        width: 100%;
+        height: 100%;
+        // min-height: 350px;
+        object-fit: contain;
+        // object-position: 0% 0%;
+        // background: $decorColor;
+
+
+
+    }
+
+    &-info {
+
+        span,
+        a {
+            display: block;
+            margin: 0.6rem 0;
+        }
+
+        a {
+            color: $darkColor;
+            display: block;
+            // text-align: center;
+            // margin: 1rem auto;
+        }
+    }
+
+    &-title {
+        font-size: 2.3rem;
+        margin: 0;
+        // text-shadow: 1px 2px 0px $decorColor;
+        text-shadow: 0px 0px 0.5px rgba(0, 0, 0, 0.7);
+    }
+
+    &-quote {
+        line-height: 1.5;
+        font-size: 1.2rem;
+    }
+
+    // Horizontal decor line
+    &-quote:before,
+    &-quote:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: $decorColor;
+        margin: 1.3rem 0;
+    }
+
+    // Second row
+    &-desc {
+        text-indent: 1rem;
+        padding: 1rem 5%;
+        line-height: 2;
+        font-size: 1.2rem;
+        width: 70%;
+        margin: 0 auto;
+        border-top: 2px dotted $decorColorBg2;
+        border-bottom: 2px dotted $decorColorBg2;
+        // background: $decorColorLight;
+        // border-radius: 35px;
+    }
+
+    // Third row
+    &-ingredients,
+    &-steps {
+        h2 {
+            color: $darkColor;
+        }
+
+        li {
+            margin: 1.4rem 0;
+            font-size: 1.25rem;
+            font-family: sans-serif;
+            line-height: 1.5;
+            transition: color 0.2s;
+
+            &::marker {
+                color: $decorColor;
+            }
+
+            &:hover {
+                color: $darkColor;
+
+            }
+
+            &:empty {
+                display: none;
+            }
+        }
+
+
+        ul,
+        ol {
+            padding-left: 1.5rem;
+        }
+    }
+}
+
+
+
+/*
+.recipe-page-intro {
+    border: 1px solid green;
+
+    &>* {
+        border: 1px solid lime;
+    }
+
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+
+    .recipe-page-img,
+    .recipe-page-intro__text {
+        flex: 50%;
+    }
+
+    .recipe-page-img {
+        object-fit: contain;
+        object-position: 0% 0%;
+    }
+
+    .recipe-page-title {
+        margin-top: 0;
+        font-size: 2rem;
+    }
+
+    .recipe-page-intro__quote {
+        padding: 0;
+        margin: 1.3rem 0;
+        font-size: 1.2rem;
+    }
+
+    span {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+iframe {
+    width: 300px;
+    height: auto;
+}
+*/
+// .recipe-page-details {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     align-content: flex-start;
+//     align-items: flex-start;
+//     justify-content: flex-start;
+//     width: 100%;
+
+//     .recipe-page-img {
+//         flex: 100%;
+//         object-fit: contain;
+//         object-position: 0% 0%;
+//         max-width: 50%;
+//         height: auto;
+//     }
+
+//     .recipe-page-title {
+//         font-size: 2rem;
+//         margin-top: 0;
+//     }
+
+//     blockquote {
+//         margin: 1rem 0;
+//     }
+
+//     .recipe-page-details__text span,
+//     blockquote {}
+
+//     .recipe-page-details__text span,
+//     blockquote {
+//         font-size: 1.3rem;
+//         display: block;
+//     }
+// }
+
+
+/*
 .recipe-page {
     max-width: $maxWidth;
     width: 80%;
@@ -160,3 +398,4 @@ li {
         margin-left: 2rem;
     }
 }
+*/

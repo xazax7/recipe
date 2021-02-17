@@ -3,11 +3,7 @@
     margin-top: 7rem;
     width: 100%;
     min-height: 10rem;
-    background: $darkFontColor;
-
-    * {
-        // border: 1px solid orange;
-    }
+    background: $decorColor;
 
     &-content {
         display: flex;
@@ -85,7 +81,10 @@
     }
 
     &-nav-list {
-        flex-direction: column;
+        border: none;
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: wrap;
         justify-content: flex-start;
         // align-items: flex-start;
     }

@@ -1,5 +1,5 @@
 // @import url('https://fonts.googleapis.com/css2?family=Domine&family=Kristi&display=swap');
-// @import './reset';
+@import './reset';
 // @import './_variables';
 @import './_header';
 @import './_nav';
@@ -8,7 +8,8 @@
 @import './footer';
 @import './responsive';
 
-@import url('https://fonts.googleapis.com/css2?family=Kristi&family=Roboto+Slab:wght@300&family=Open+Sans:wght@300?family=Antic+Slab&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Kristi&family=Roboto+Slab:wght@300&family=Open+Sans:wght@300?family=Antic+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kristi&family=Lato:wght@300;400&family=Lora:wght@400;500;600;700&display=swap');
 
 // ssd
 // So scroll bar doesnt 'pop' into existence on page load
@@ -17,41 +18,39 @@ body {
     background: $bgColor;
 }
 
+.main {
+    margin-top: 3rem;
+}
+
+.nav {}
+
 .nav,
 .header,
-.page-header,
-.post-list {
+.main {
     max-width: $maxWidth;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 
+p,
+span,
+.page-header-small {
+    font-family: 'Lato', sans-serif;
+}
+
 // footer is not involved, .footer-content
 
+
+.nav-list__link,
+.page-header,
+.post-small-title,
 h1,
 h2,
 h3 {
-    // font-family: 'Antic Slab', serif !important;
-    font-family: $headerFont;
+    font-family: 'Lora', serif;
 }
 
-
-.back-btn {
-    background: none;
-    padding: 1rem;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0px;
-    // color: $medFontColor;
-    color: black;
-    transition: width 1s;
-
-    &:hover {
-        background: $lightBg;
-    }
-}
 
 .loading {
     padding-top: 20vh;
@@ -69,10 +68,6 @@ main {
     min-height: 70vh;
 }
 
-* {
-    // transition: 0.4s;
-}
-
 
 @keyframes bounce {
     0% {
@@ -88,38 +83,56 @@ main {
     }
 }
 
-
-
-
+// .bg-left,
+// .bg-right {
+//     position: fixed;
+//     top: 0;
+//     height: 100vh;
+//     overflow: hidden;
+//     width: 2%;
+// }
 .bg-left {
-    left: 0;
+
+    // top: 0.5rem;
+    // left: 5%;
+    // width: 90%;
+    // border: 1px solid red;
+    // height: 5rem;
+    // background: rgb(0, 215, 255);
+    // background: radial-gradient(circle, rgba(0, 215, 255, 0.3) 1%, rgba(255, 255, 255, 0) 50%);
+    // z-index: -1;
 }
 
-.bg-left,
 .bg-right {
-    top: 0;
-    background: url('../../images/pattern.webp');
-    width: 8vw;
-    height: 100vh;
-    position: absolute;
+    right: 0;
 }
 
-.bg-right {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2;
+/* * * * * ** * * * ** * *
+ NEEDS TO FIX
+ * * * * ** * * * ** * **/
+// I don't know why this has to be here yet.
 
+// .nav-list {
+//     border: none;
+// }
 
+// .header-title {
+//     background: rgba(0, 102, 255, 0.3);
+//     width: 100vw;
+//     text-align: center;
+//     height: 3rem;
+//     line-height: -1;
+// }
+
+.main {
+    background: $white;
+    padding: 5rem 5rem;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.445);
 }
 
-.bg-left {
-    position: fixed;
-    left: 0vw;
-    top: 0;
-    width: 100vw;
-    z-index: -1;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, $bgColor 85%, rgba(255, 255, 255, 0) 100%);
+
+body {
+    background: linear-gradient(-200deg, $decorColor, $decorColorBg2);
 }

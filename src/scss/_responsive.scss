@@ -1,3 +1,4 @@
+/*
 .nav-btn {
     display: none;
 }
@@ -59,5 +60,109 @@
 
     .footer-section {
         // flex: 0 0 100%;
+    }
+}
+*/
+
+.nav-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 0px black;
+    color: white;
+    z-index: 3;
+}
+
+
+@media only screen and (max-width: 680px) {
+    .header-title {
+        font-size: 3rem;
+    }
+
+    .header {
+        margin: 0;
+        position: fixed;
+        z-index: 3;
+        background: $decorColor;
+        width: 100vw !important;
+        left: 0;
+        top: 0;
+        padding: 1rem;
+
+        &-title {}
+    }
+
+    .nav .nav-list__link {
+        display: none;
+    }
+
+    .nav-btn {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+    }
+
+    .nav.mobile-nav-open {
+        background: white;
+        z-index: 3;
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        padding-top: 4rem;
+        height: 100vh;
+        width: 100vw;
+        display: block;
+
+        .nav-btn {
+
+            // color: black;
+            text-shadow: none;
+        }
+
+        .nav-list {
+
+            flex-direction: column;
+        }
+
+        .nav-list__link {
+            text-align: left;
+            display: block;
+            font-size: 1.2rem;
+            margin: 1rem 1.5rem;
+            color: black;
+        }
+    }
+
+    .main {
+        margin-top: 6rem !important;
+        padding: 1.5rem !important;
+        width: 97% !important;
+    }
+
+    .recipe {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        gap: 1rem;
+        grid-template-areas:
+            "recipe-img"
+            "recipe-info"
+            "recipe-desc"
+            "recipe-ingredients"
+            "recipe-steps";
+    }
+
+    .recipe-desc {
+        width: 100%;
+    }
+
+    header {
+        overflow: hidden;
+    }
+
+    .footer {
+        overflow: hidden;
     }
 }

@@ -6,6 +6,99 @@
 @import './_variables.scss';
 
 .page-header {
+    // margin: 1.5rem 0;
+    margin: 0 0 4rem 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    line-height: 2rem;
+
+    .page-header-small {
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 0;
+        margin: 0;
+        color: $decorColor;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.author-details-small {
+    flex: 0 1 30%;
+}
+
+.post-list {
+    flex: 1 1 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.post-small-img {
+    height: 13rem;
+    width: 100%;
+    min-width: 250px;
+    object-fit: cover;
+    background-position: center;
+}
+
+.post-small-link {
+    text-decoration: none;
+
+
+    &:hover .post-small-title {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+
+    &:hover .post-small-img {
+        filter: contrast(1.1);
+    }
+}
+
+.post-small-container {
+    flex: 0 1 48%;
+    // padding: 1rem;
+    height: auto !important;
+    padding: 0 1rem;
+    margin-bottom: 5rem;
+    // padding: 0 1.5rem 2rem 0;
+}
+
+.post-small-details {
+    min-height: auto;
+    padding: 0;
+    border: none;
+    font-size: 0.8rem;
+    color: $black;
+}
+
+.post-small-title {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: $darkColor;
+    margin: 0.6rem 0 0 0;
+
+}
+
+.post-small-description {
+    line-height: 1.3;
+    font-size: 1rem;
+}
+
+.post-small-title,
+.post-small-description {
+    text-decoration: none;
+    // text-align: center;
+}
+
+/*
+.page-header {
     line-height: 4rem;
     text-transform: capitalize;
 }
@@ -178,3 +271,4 @@
         color: rgb(70, 70, 70);
     }
 }
+*/

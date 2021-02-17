@@ -7,13 +7,13 @@ export default {
       name: 'title',
       title: 'Title (example: Gift-wrapping cookies)',
       type: 'string',
-      validation: Rule => Rule.required().min(1).max(30).warning('Missing Title.').error('Title too long or too short.')
+      validation: Rule => Rule.required().min(1).warning('Title too short.').error('Title too long or too short.')
     },
     {
       name: 'description',
       title: 'Short Description (example: How to create a nice shimmering presentation using cellophane)',
       type: 'string',
-      validation: Rule => Rule.required().min(1).max(75).warning('Missing Description.').error('Description too long or too short.')
+      validation: Rule => Rule.required().min(1).max(175).warning('Missing Description.').error('Description too long or too short.')
     },
     {
       name: 'slug',
@@ -88,7 +88,7 @@ export default {
     },
     {
       name: 'type',
-      title: 'Type (Options: breakfast, lunch, dinner, dessert, drinks. Can add multiple types, press enter after each type.)',
+      title: 'Type (Options: breakfast, lunch, dinner, dessert, drinks. Can add multiple types, press enter after each type.) MUST BE LOWERCASE',
       type: 'array',
       of: [{ type: 'string' }],
       options: {

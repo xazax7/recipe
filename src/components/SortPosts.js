@@ -40,18 +40,37 @@ export default function SortPosts() {
             {/* <Link to={'/'}><button>‹ Back to all recipes</button></Link> */}
             {/* <div className="loading-text">Setting the table...</div> */}
             {/* <h1>No recipes for {slug} yet!</h1> */}
-            <div className="loading">🍴</div>
+            <main className="main"><FadeIn transitionDuration="100" className="loading">🍴</FadeIn></main>
         </>
     );
 
 
     return <main className="main">
-        {allPostsData < 1 ? <FadeIn transitionDuration="300" childTag="h1" className="page-header">{`${slug} recipes coming soon!`}</FadeIn> : <FadeIn transitionDuration="300" wrapperTag="h1" className="page-header">{slug}</FadeIn>}
-        <div className="post-list">
+        {allPostsData < 1 ? <FadeIn transitionDuration="300" childTag="h1" className="page-header">{`${slug} recipes coming soon!`}</FadeIn> : <FadeIn transitionDuration="300" wrapperTag="h1" className="page-header"><span className="page-header-small">Viewing</span>{slug}</FadeIn>}
+        <FadeIn transitionDuration="1000" className="post-list" childClassName="post-small-container" delay="500">
 
 
-
-            {
+            {allPostsData && allPostsData.map((post, index) => (
+                <Link
+                    to={'/' + post.slug.current}
+                    key={post.slug.current}
+                    className="post-small-link"
+                >
+                    {/* <span className="post-small"
+                        key={index}> */}
+                    <img src={post.mainImage.asset.url}
+                        height="300"
+                        className="post-small-img"
+                        alt={post.title} />
+                    <span className="post-small-details">
+                        <h2 className="post-small-title"> {post.title}</h2>
+                        {post.description && <p className="post-small-description">{post.description}</p>}
+                    </span>
+                    {/* </span> */}
+                </Link>
+            ))
+            }
+            {/* {
 
                 allPostsData && allPostsData.map((post, index) => (
 
@@ -77,10 +96,10 @@ export default function SortPosts() {
                 ))
 
 
-            }
+            } */}
 
 
 
 
-        </div></main>
+        </FadeIn></main>
 }

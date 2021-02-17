@@ -67,53 +67,57 @@ export default function OnePost() {
         <>
             {/* <Link to={'/'}><button>‹ Back to all recipes</button></Link> */}
             {/* <div className="loading-text">Setting the table...</div> */}
-            <div className="loading">🍴</div>
+            <main className="main"><FadeIn transitionDuration="100" className="loading">🍴</FadeIn></main>
         </>
     );
 
     return (
 
-        <FadeIn transitionDuration="1500" wrapperTag="main" className="recipe-page main">
-            <Link to={'/'} className="btn back-btn">‹ Back to all recipes</Link>
-            <h2 className="recipe-page-title">{postData.title}</h2>
-            <blockquote><span>“</span>{postData.description}<span>”</span></blockquote>
 
 
-            <div className="recipe-page-details">
+        <FadeIn transitionDuration="1000" className="main" wrapperTag="main" delay="500">
+
+            <div className="recipe">
+                {/* recipe-back-btn */}
+                {/* <Link to={'/'} className="btn recipe-back-btn" >‹ Back to all recipes</Link > */}
+                {/* recipe-img */}
                 {postData.mainImage &&
-                    <img src={urlFor(postData.mainImage).width(500).url()} alt="main image of post" className="recipe-page-img" />
+                    <img src={urlFor(postData.mainImage).width(300).url()} alt="main image of post" className="recipe-img" />
                 }
-                <div className="recipe-page-details__text">
-                    <span><strong>Prep:</strong> {postData.prepTime}</span>
-                    <span><strong>Cook:</strong> {postData.cookTime}</span>
-                    <span><strong>Servings:</strong> {postData.servings}</span>
+
+                {/* recipe-info */}
+                <div className="recipe-info">
+                    <h2 className="recipe-title">{postData.title}</h2>
+                    <span className="recipe-quote">{postData.description}</span>
+                    <span>Prep:{postData.prepTime}</span>
+                    <span>Cook:{postData.cookTime}</span>
+                    <span>Servings:{postData.servings}</span>
+                    <a className="btn-link" href={`https://www.youtube.com/watch?v=${youtubeParser(postData.youtube)}`}>Watch how it's made on Youtube</a>
                 </div>
-            </div>
 
 
-            <div>
-                {/* Youtube video */}
-                {postData.youtube && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${youtubeParser(postData.youtube)}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
-                {/* {postData.ingredients && <div>{postData.ingredients}</div>} */}
+                {/* recipe-video-desc */}
+                <div className="recipe-desc">
 
-                {postData.longerDesc && <div className="recipe-page-description"><BlockContent
-                    blocks={postData.longerDesc}
-                    projectId={sanityClient.clientConfig.projectId}
-                    dataset={sanityClient.clientConfig.dataset}
-                /></div>}
+                    {/* recipe-desc */}
+                    {postData.longerDesc && <BlockContent
+                        blocks={postData.longerDesc}
+                        projectId={sanityClient.clientConfig.projectId}
+                        dataset={sanityClient.clientConfig.dataset}
+                    />}
+                </div>
 
-
-                {/* Ingredients are rendered as <p> */}
-                <div className="ingredients-list">
-                    <h2 className="ingredients-list-header recipe-header">Ingredients</h2>
+                {/* recipe-ingredients */}
+                <div className="recipe-ingredients">
+                    <h2>Ingredients</h2>
                     <BlockContent
                         blocks={postData.ingredients}
                         projectId={sanityClient.clientConfig.projectId}
                         dataset={sanityClient.clientConfig.dataset}
                     />
                 </div>
-                <div className="steps">
-                    <h2 className="steps-header recipe-header">Steps</h2>
+                <div className="recipe-steps">
+                    <h2>Steps</h2>
                     {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/1MjwG7YzMFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                     <BlockContent
                         blocks={postData.body}
